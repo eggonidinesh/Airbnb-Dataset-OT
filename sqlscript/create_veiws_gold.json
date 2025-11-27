@@ -1,0 +1,17 @@
+{
+	"name": "create_veiws_gold",
+	"properties": {
+		"content": {
+			"query": "CREATE VIEW gold.airbnb\nAS\nSELECT \n    * \nFROM \n    OPENROWSET\n        (\n            BULK 'https://otairbnbdatalakedin.blob.core.windows.net/silver/airbnb/',\n            FORMAT = 'PARQUET'\n        ) as QUER1\n\n\nSelect * from gold.airbnb\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "oftentrainairbnbdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

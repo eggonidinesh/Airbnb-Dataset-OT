@@ -1,0 +1,17 @@
+{
+	"name": "Crteate_External_Table",
+	"properties": {
+		"content": {
+			"query": "CREATE DATABASE SCOPED CREDENTIAL cred_oftentrain\nWITH IDENTITY = 'Managed Identity'\n\nCREATE EXTERNAL DATA SOURCE source_silver\nWITH\n(\nLOCATION = 'https://otairbnbdatalakedin.blob.core.windows.net/silver/',\nCREDENTIAL = cred_oftentrain\n)\n\n\nCREATE EXTERNAL DATA SOURCE source_gold\nWITH\n(\nLOCATION = 'https://otairbnbdatalakedin.blob.core.windows.net/gold',\nCREDENTIAL = cred_oftentrain\n)\n\nCREATE EXTERNAL FILE FORMAT format_parquet\nWITH\n(\nFORMAT_TYPE = PARQUET,\nDATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'\n)\n\nCREATE EXTERNAL TABLE gold.airbnbexternal\nWITH\n(\n\tLOCATION = 'airbnbexternal',\n\tDATA_SOURCE = source_gold,\n\tFILE_FORMAT = format_parquet\n)\nAS\nSELECT * FROM gold.airbnb\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "oftentrainairbnbdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
