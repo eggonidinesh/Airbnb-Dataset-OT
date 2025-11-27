@@ -1,0 +1,23 @@
+{
+	"name": "ot_dsforhttp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkserviceforhttp",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "eggonidinesh/Airbnb-Dataset-OT/refs/heads/main/Data/Airbnb-Dataset-OT"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
